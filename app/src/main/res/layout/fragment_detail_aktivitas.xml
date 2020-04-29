@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_marginBottom="200dp"
+    tools:context=".fragment.DetailAktivitas">
+
+    <RelativeLayout
+        android:id="@+id/detail_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/margin_top_8dp"
+            android:layout_marginTop="@dimen/margin_top_8dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_keyboard_backspace_black_24dp" />
+
+        <ImageView
+            android:id="@+id/photoDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="@dimen/margin_left_16dp"
+            android:layout_marginBottom="80dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/pushup" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/rec_bg">
+
+            <TextView
+                android:id="@+id/txtNameDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="32dp"
+                android:fontFamily="@font/futura_medium_condensed_t"
+                android:text="@string/push_up"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:ignore="RelativeOverlap" />
+            <!--                        <ImageView-->
+            <!--                            android:id="@+id/imgFavorite"-->
+            <!--                            android:layout_width="29dp"-->
+            <!--                            android:layout_height="29dp"-->
+            <!--                            android:src="@drawable/ic_favorite_border_black_24dp"-->
+            <!--                            android:layout_alignParentEnd="true"-->
+            <!--                            android:layout_marginEnd="80dp"-->
+            <!--                            android:layout_centerVertical="true"/>-->
+            <!--            <com.github.ivbaranov.mfb.MaterialFavoriteButton-->
+            <!--                android:id="@+id/favorite_button"-->
+            <!--                android:layout_width="29dp"-->
+            <!--                android:layout_height="29dp"-->
+            <!--                android:layout_alignParentEnd="true"-->
+            <!--                android:layout_alignParentRight="true"-->
+            <!--                android:layout_centerVertical="true"-->
+            <!--                android:layout_marginEnd="80dp"-->
+            <!--                app:mfb_favorite_image="@drawable/ic_favorite_black_24dp"-->
+            <!--                app:mfb_not_favorite_image="@drawable/ic_favorite_border_black_24dp" />-->
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/descDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_layout"
+        android:layout_marginHorizontal="30dp"
+        android:text="@string/lorem" />
+
+    <Button
+        android:id="@+id/doit"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descDetail"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="@dimen/margin_left_16dp"
+        android:text="mulai sekarang"
+        android:textColor="@color/white"
+        android:fontFamily="@font/unicode_futurab"
+        android:contentDescription="@string/todo"
+        android:background="@drawable/do_it" />
+
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

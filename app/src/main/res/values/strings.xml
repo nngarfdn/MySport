@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">My Sport</string>
+    <string name="my_sport">My Sport</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="news">News</string>
+    <string name="push_up">Push Up</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis vitae a duis pretium nisl ut ac est cursus. Elit, venenatis donec id cursus turpis nulla. Tellus egestas ac elit vitae. Elementum nullam ullamcorper interdum sit ornare eu tempus sodales gravida. Amet diam, dis tempor, pellentesque etiam. Cras elementum rhoncus magna lectus vehicula vel hendrerit. Sit sed eget bibendum vestibulum, orci commodo volutpat arcu. Est convallis interdum dictumst elementum congue. Ornare.</string>
+    <string name="todo">TODO</string>
+    <string name="tanggal">tanggal</string>
+    <string name="aktivitas">Aktivitas</string>
+    <string name="ha">);</string>
+    <string name="text_not_nul">\" TEXT NOT NULL, \"</string>
+    <string name="berat">Berat</string>
+</resources>

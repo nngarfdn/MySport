@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="200dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_mysport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_16dp"
+        android:layout_marginTop="@dimen/margin_left_16dp"
+        android:text="@string/my_sport"
+        android:textColor="@color/pink"
+        android:fontFamily="@font/futur"
+        android:textSize="18sp"
+        tools:ignore="RelativeOverlap" />
+
+    <TextView
+        android:id="@+id/tanggal"
+        android:layout_below="@id/tv_mysport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tanggal"
+        android:layout_marginStart="@dimen/margin_left_16dp"
+        android:layout_marginTop="@dimen/margin_top_4dp"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_left_16dp"
+        android:layout_marginTop="@dimen/margin_left_16dp"
+        android:src="@drawable/icon_circle"
+        android:contentDescription="@string/todo" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_flipper"
+        android:layout_below="@+id/tanggal"
+        android:layout_marginTop="@dimen/margin_left_16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="16dp">
+
+        <ViewFlipper
+        android:id="@+id/v_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_aktiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aktivitas"
+        android:layout_marginStart="@dimen/margin_left_16dp"
+        android:layout_marginTop="@dimen/margin_left_16dp"
+        android:textSize="16sp"
+        android:layout_below="@id/cv_flipper"
+        android:fontFamily="@font/futur"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_aktivitas"
+        android:layout_marginHorizontal="@dimen/margin_left_16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_aktiv"/>
+
+
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

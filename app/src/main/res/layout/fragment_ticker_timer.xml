@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<LinearLayout
+    android:layout_marginTop="50dp"
+    android:layout_below="@+id/detail_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="50dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ticker.views.com.ticker.widgets.circular.timer.view.CircularView
+        android:id="@+id/circular_view_with_timer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:m_arc_stroke_color="@color/colorPrimary"
+        app:m_cicle_stroke_width="25"
+        app:m_circle_radius="120"
+        app:m_circle_stroke_color="@color/colorAccent" />
+</RelativeLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="0dp"
+    android:orientation="vertical"
+    >
+    <com.github.florent37.materialtextfield.MaterialTextField
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:mtf_labelColor="#666"
+        app:mtf_image="@drawable/ic_access_time_black_24dp"
+        android:visibility="visible"
+        android:id="@+id/materialTextField"
+        >
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="200dp"
+        android:hint="INPUT MINUTE"
+        android:inputType="number"
+        android:visibility="visible"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+    </com.github.florent37.materialtextfield.MaterialTextField>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_left_16dp">
+    <Button
+        android:id="@+id/set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SET"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_kuning"
+        android:layout_alignParentStart="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:visibility="visible"
+        android:layout_gravity="center_horizontal"/>
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_biru"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+
+        />
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_pink"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentEnd="false"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="20dp"
+        />
+
+</RelativeLayout>
+</LinearLayout>
+
+</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
