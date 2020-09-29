@@ -53,54 +53,79 @@ public static String getTimeAgo(String timeStamp) {
 
     public static String getHour(String hour) {
         String result = "";
-        if (hour.equals("00")) {
-            result = "07";
-        } else if (hour.equals("01")) {
-            result = "08";
-        } else if (hour.equals("02")) {
-            result = "09";
-        } else if (hour.equals("03")) {
-            result = "10";
-        } else if (hour.equals("04")) {
-            result = "11";
-        } else if (hour.equals("05")) {
-            result = "12";
-        } else if (hour.equals("06")) {
-            result = "13";
-        } else if (hour.equals("07")) {
-            result = "14";
-        } else if (hour.equals("08")) {
-            result = "15";
-        } else if (hour.equals("09")) {
-            result = "16";
-        } else if (hour.equals("10")) {
-            result = "17";
-        } else if (hour.equals("11")) {
-            result = "18";
-        } else if (hour.equals("12")) {
-            result = "19";
-        } else if (hour.equals("13")) {
-            result = "20";
-        } else if (hour.equals("14")) {
-            result = "21";
-        } else if (hour.equals("15")) {
-            result = "22";
-        } else if (hour.equals("16")) {
-            result = "23";
-        } else if (hour.equals("17")) {
-            result = "00";
-        } else if (hour.equals("18")) {
-            result = "01";
-        } else if (hour.equals("19")) {
-            result = "02";
-        } else if (hour.equals("20")) {
-            result = "03";
-        } else if (hour.equals("21")) {
-            result = "04";
-        } else if (hour.equals("22")) {
-            result = "05";
-        } else if (hour.equals("23")) {
-            result = "06";
+        switch (hour) {
+            case "00":
+                result = "07";
+                break;
+            case "01":
+                result = "08";
+                break;
+            case "02":
+                result = "09";
+                break;
+            case "03":
+                result = "10";
+                break;
+            case "04":
+                result = "11";
+                break;
+            case "05":
+                result = "12";
+                break;
+            case "06":
+                result = "13";
+                break;
+            case "07":
+                result = "14";
+                break;
+            case "08":
+                result = "15";
+                break;
+            case "09":
+                result = "16";
+                break;
+            case "10":
+                result = "17";
+                break;
+            case "11":
+                result = "18";
+                break;
+            case "12":
+                result = "19";
+                break;
+            case "13":
+                result = "20";
+                break;
+            case "14":
+                result = "21";
+                break;
+            case "15":
+                result = "22";
+                break;
+            case "16":
+                result = "23";
+                break;
+            case "17":
+                result = "00";
+                break;
+            case "18":
+                result = "01";
+                break;
+            case "19":
+                result = "02";
+                break;
+            case "20":
+                result = "03";
+                break;
+            case "21":
+                result = "04";
+                break;
+            case "22":
+                result = "05";
+                break;
+            case "23":
+                result = "06";
+                break;
         }
         return result;
     }

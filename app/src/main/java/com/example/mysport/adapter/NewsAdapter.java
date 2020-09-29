@@ -10,24 +10,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.mysport.R;
-import com.example.mysport.model.News;
+import com.example.mysport.model.ArticlesItem;
 
 import java.util.List;
+import java.util.Objects;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder> {
 
-    public List<News> androidList;
+    public List<ArticlesItem> androidList;
     private Context mContext;
     private NewsAdapter.onSelectData onSelectData;
 
     public interface onSelectData {
-        void onSelected(News mdlNews);
+        void onSelected(ArticlesItem mdlNews);
     }
 
-    public NewsAdapter(Context context, List<News> android, NewsAdapter.onSelectData onSelectData) {
+    public NewsAdapter(Context context, List<ArticlesItem> android, NewsAdapter.onSelectData onSelectData) {
         this.mContext = context;
         this.androidList = android;
         this.onSelectData = onSelectData;
@@ -43,7 +42,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder> {
     @Override
     public void onBindViewHolder(NewsViewHolder viewHolder, int i) {
 
-        final News berita = androidList.get(i);
+        final ArticlesItem berita = androidList.get(i);
 
         Glide.with(mContext)
                 .load(berita.getUrlToImage())
@@ -53,13 +52,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder> {
                 .into(viewHolder.image);
 
         viewHolder.title.setText(berita.getTitle());
-        viewHolder.publishedAt.setText(TimeUnits.getTimeAgo(berita.getPublisedAt()));
-        viewHolder.cvNews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onSelectData.onSelected(berita);
-            }
-        });
+        viewHolder.publishedAt.setText(TimeUnits.getTimeAgo(Objects.requireNonNull(berita.getPublishedAt())));
+        viewHolder.cvNews.setOnClickListener(v -> onSelectData.onSelected(berita));
     }
 
     @Override

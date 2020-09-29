@@ -15,11 +15,12 @@ import android.widget.ProgressBar;
 
 import com.example.mysport.R;
 
+import java.util.Objects;
+
 
 public class DetailKabar extends Fragment {
 
      private ProgressBar mProgressBar;
-    private WebView mWebView;
 
     String url = "https://www.google.com";
 
@@ -33,6 +34,7 @@ public class DetailKabar extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,11 +45,12 @@ public class DetailKabar extends Fragment {
 
         Bundle bundle = getArguments();
 
+        assert bundle != null;
         bundle.getString("url");
 
         url =  getArguments().getString("url");
 
-        mWebView = view.findViewById(R.id.read_news);
+        WebView mWebView = view.findViewById(R.id.read_news);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl(url);
         mProgressBar.setProgress(0);
@@ -64,14 +67,14 @@ public class DetailKabar extends Fragment {
             public void onPageStarted(WebView view, String urlStart, Bitmap favicon) {
                 //mProgressBar.setProgress(0);
                 url = urlStart;
-                getActivity().invalidateOptionsMenu();
+                Objects.requireNonNull(getActivity()).invalidateOptionsMenu();
 
             }
 
             @Override
             public void onPageFinished(WebView view, String urlPage) {
                 mProgressBar.setVisibility(View.GONE);
-                getActivity().invalidateOptionsMenu();
+                Objects.requireNonNull(getActivity()).invalidateOptionsMenu();
             }
         });
         return view;

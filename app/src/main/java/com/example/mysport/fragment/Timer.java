@@ -1,10 +1,8 @@
 package com.example.mysport.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +13,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mysport.MainActivity;
+import androidx.fragment.app.Fragment;
+
 import com.example.mysport.R;
 
 import java.util.Locale;
+import java.util.Objects;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
@@ -60,43 +60,32 @@ public class Timer extends Fragment {
         mButtonStartPause = view.findViewById(R.id.button_start_pause);
         mButtonReset = view.findViewById(R.id.button_reset);
 
-        mButtonSet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String input = mEditTextInput.getText().toString();
-                if (input.length() == 0) {
-                    Toast.makeText(getActivity(), "Field can't be empty", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+        mButtonSet.setOnClickListener(v -> {
+            String input = mEditTextInput.getText().toString();
+            if (input.length() == 0) {
+                Toast.makeText(getActivity(), "Field can't be empty", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-                long millisInput = Long.parseLong(input) * 60000;
-                if (millisInput == 0) {
-                    Toast.makeText(getActivity(), "Please enter a positive number", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+            long millisInput = Long.parseLong(input) * 60000;
+            if (millisInput == 0) {
+                Toast.makeText(getActivity(), "Please enter a positive number", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-                setTime(millisInput);
-                mEditTextInput.setText("");
+            setTime(millisInput);
+            mEditTextInput.setText("");
+        });
+
+        mButtonStartPause.setOnClickListener(v -> {
+            if (mTimerRunning) {
+                pauseTimer();
+            } else {
+                startTimer();
             }
         });
 
-        mButtonStartPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mTimerRunning) {
-                    pauseTimer();
-                } else {
-                    startTimer();
-                }
-            }
-        });
-
-        mButtonReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetTimer();
-            }
-        });
+        mButtonReset.setOnClickListener(v -> resetTimer());
 
         return view;
     }
@@ -157,6 +146,7 @@ public class Timer extends Fragment {
         mTextViewCountDown.setText(timeLeftFormatted);
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateWatchInterface() {
         if (mTimerRunning) {
             mEditTextInput.setVisibility(View.INVISIBLE);
@@ -183,7 +173,7 @@ public class Timer extends Fragment {
     }
 
     private void closeKeyboard() {
-        View view = getActivity().getCurrentFocus();
+        View view = Objects.requireNonNull(getActivity()).getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -194,7 +184,7 @@ public class Timer extends Fragment {
     public void onStop() {
         super.onStop();
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
         editor.putLong("startTimeInMillis", mStartTimeInMillis);
@@ -213,7 +203,7 @@ public class Timer extends Fragment {
     public void onStart() {
         super.onStart();
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences("prefs", MODE_PRIVATE);
 
         mStartTimeInMillis = prefs.getLong("startTimeInMillis", 600000);
         mTimeLeftInMillis = prefs.getLong("millisLeft", mStartTimeInMillis);

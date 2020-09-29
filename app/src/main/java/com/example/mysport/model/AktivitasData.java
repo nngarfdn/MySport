@@ -11,30 +11,35 @@ public class AktivitasData {
     private static String[] aktivitasName = {
       "Push Up",
       "Sit Up",
-      "Push Up",
-      "Sit Up"
+      "Pull Up",
+      "Lunge"
     };
 
     private static String[] aktivitasDetail = {
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis vitae a duis pretium nisl ut ac est cursus. Elit, venenatis donec id cursus turpis nulla. Tellus egestas ac elit vitae. Elementum nullam ullamcorper interdum sit ornare eu tempus sodales gravida. Amet diam, dis tempor, pellentesque etiam. Cras elementum rhoncus magna lectus vehicula vel hendrerit. Sit sed eget bibendum vestibulum, orci commodo volutpat arcu. Est convallis interdum dictumst elementum congue. Ornare.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis vitae a duis pretium nisl ut ac est cursus. Elit, venenatis donec id cursus turpis nulla. Tellus egestas ac elit vitae. Elementum nullam ullamcorper interdum sit ornare eu tempus sodales gravida. Amet diam, dis tempor, pellentesque etiam. Cras elementum rhoncus magna lectus vehicula vel hendrerit. Sit sed eget bibendum vestibulum, orci commodo volutpat arcu. Est convallis interdum dictumst elementum congue. Ornare.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis vitae a duis pretium nisl ut ac est cursus. Elit, venenatis donec id cursus turpis nulla. Tellus egestas ac elit vitae. Elementum nullam ullamcorper interdum sit ornare eu tempus sodales gravida. Amet diam, dis tempor, pellentesque etiam. Cras elementum rhoncus magna lectus vehicula vel hendrerit. Sit sed eget bibendum vestibulum, orci commodo volutpat arcu. Est convallis interdum dictumst elementum congue. Ornare.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis vitae a duis pretium nisl ut ac est cursus. Elit, venenatis donec id cursus turpis nulla. Tellus egestas ac elit vitae. Elementum nullam ullamcorper interdum sit ornare eu tempus sodales gravida. Amet diam, dis tempor, pellentesque etiam. Cras elementum rhoncus magna lectus vehicula vel hendrerit. Sit sed eget bibendum vestibulum, orci commodo volutpat arcu. Est convallis interdum dictumst elementum congue. Ornare."
+            "Berfungsi untuk menguatkan otot bisep maupun trisep. Posisi awal tidur tengkurap dengan tangan di sisi kanan kiri badan. Kemudian badan didorong ke atas dengan kekuatan tangan. Posisi kaki dan badan tetap lurus atau tegap",
+            "Latih ketahanan perut untuk memperkuat, mengencangkan dan mengencangkan otot-otot perut. Ini mirip dengan crunch, tetapi sit-up memiliki jangkauan gerak yang lebih lengkap dan kondisi otot tambahan.",
+            "Latih kekuatan tubuh bagian atas. Angkat badan dilakukan dengan cara menggantungkan tubuh dengan tangan dan mengangkatnya",
+            "Perkuat lutut kakimu dengan gerakan ini.\n" +
+                    "\n" +
+                    "Pisahkan salah satu kaki ke depan.\n" +
+                    "Pastikan telapak kaki yang berada di depan rata dengan lantai.\n" +
+                    "Tekuk lutut sampai lutut kaki yang berada di belakang menyentuh lantai.\n" +
+                    "Dorong kaki yang berada di depan untuk kembali ke posisi semula."
     };
 
     private static String[] aktivitasPhoto = {
             "https://i.imgur.com/pPWmzSI.png",
             "https://i.imgur.com/dWlFLNN.png",
-             "https://i.imgur.com/pPWmzSI.png",
-            "https://i.imgur.com/dWlFLNN.png"
+             "https://i.imgur.com/6PN0CJ7.png",
+            "https://i.imgur.com/6S3ehTf.png"
 
     };
 
     private static  int[] aktivitasColor = {
             Color.parseColor("#86E2F1"),
             Color.parseColor("#FFD082"),
-            Color.parseColor("#FE7C7C"),
-            Color.parseColor("#86E2F1")
+            Color.parseColor("#86E2F1"),
+            Color.parseColor("#FE7C7C")
     };
 
     public static ArrayList<Aktivitas> getListData() {

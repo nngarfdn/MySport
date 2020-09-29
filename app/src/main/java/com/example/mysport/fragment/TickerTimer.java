@@ -1,23 +1,17 @@
 package com.example.mysport.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.mysport.MainActivity;
+import androidx.fragment.app.Fragment;
 import com.example.mysport.R;
 import com.github.florent37.materialtextfield.MaterialTextField;
-import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 import ticker.views.com.ticker.widgets.circular.timer.callbacks.CircularViewCallback;
 import ticker.views.com.ticker.widgets.circular.timer.view.CircularView;
@@ -30,8 +24,6 @@ public class TickerTimer extends Fragment implements View.OnClickListener {
     String nameDet ;
         String photoDet;
         int colorDet;
-    //private CircularView circularViewWithCustomText;
-    private boolean isPause = false;
     private MaterialTextField materialTextField;
     private Button set;
     private EditText input;
@@ -56,6 +48,7 @@ public class TickerTimer extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
          Bundle mBundle = getArguments();
 
+        assert mBundle != null;
         nameDet = mBundle.getString("name");
          photoDet = mBundle.getString("photo");
        colorDet = mBundle.getInt("color");
@@ -129,31 +122,31 @@ public class TickerTimer extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
 
             case R.id.start:
-                initCircularViewWithTimer(getView(), p);
+                initCircularViewWithTimer(Objects.requireNonNull(getView()), p);
                 //circularViewWithoutText.startTimer();
                 circularViewWithTimer.startTimer();
-                input.setVisibility(view.INVISIBLE);
-                set.setVisibility(view.INVISIBLE);
-                start.setVisibility(view.INVISIBLE);
-                stop.setVisibility(view.VISIBLE);
-                materialTextField.setVisibility(view.INVISIBLE);
+                input.setVisibility(View.INVISIBLE);
+                set.setVisibility(View.INVISIBLE);
+                start.setVisibility(View.INVISIBLE);
+                stop.setVisibility(View.VISIBLE);
+                materialTextField.setVisibility(View.INVISIBLE);
                 //circularViewWithCustomText.startTimer();
                 break;
 
             case R.id.stop:
-                set.setVisibility(view.VISIBLE);
-                start.setVisibility(view.INVISIBLE);
-                stop.setVisibility(view.INVISIBLE);
-                input.setVisibility(view.VISIBLE);
-                materialTextField.setVisibility(view.VISIBLE);
+                set.setVisibility(View.VISIBLE);
+                start.setVisibility(View.INVISIBLE);
+                stop.setVisibility(View.INVISIBLE);
+                input.setVisibility(View.VISIBLE);
+                materialTextField.setVisibility(View.VISIBLE);
                 circularViewWithTimer.stopTimer();
                 break;
             case R.id.set:
-                set.setVisibility(view.INVISIBLE);
-                start.setVisibility(view.VISIBLE);
-                stop.setVisibility(view.INVISIBLE);
-                input.setVisibility(view.INVISIBLE);
-                materialTextField.setVisibility(view.INVISIBLE);
+                set.setVisibility(View.INVISIBLE);
+                start.setVisibility(View.VISIBLE);
+                stop.setVisibility(View.INVISIBLE);
+                input.setVisibility(View.INVISIBLE);
+                materialTextField.setVisibility(View.INVISIBLE);
                 String timeInput = input.getText().toString();
                 if (input.length() == 0) {
                     Toast.makeText(getActivity(), "Field can't be empty", Toast.LENGTH_SHORT).show();
@@ -166,7 +159,7 @@ public class TickerTimer extends Fragment implements View.OnClickListener {
                     return;
                 }
                 p = millisInput;
-                initCircularViewWithTimer(getView(), millisInput);
+                initCircularViewWithTimer(Objects.requireNonNull(getView()), millisInput);
                 input.setText("");
                 break;
         }

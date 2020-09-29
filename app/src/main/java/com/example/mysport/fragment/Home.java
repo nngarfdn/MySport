@@ -1,12 +1,6 @@
 package com.example.mysport.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +8,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.mysport.R;
 import com.example.mysport.adapter.ListAktivitasAdapter;
 import com.example.mysport.model.Aktivitas;
 import com.example.mysport.model.AktivitasData;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -26,7 +25,6 @@ public class Home extends Fragment {
     private TextView tanggal;
     private RecyclerView rvAktivitas;
     private ArrayList<Aktivitas> list = new ArrayList<>();
-    private Context context;
 
     public Home() {
         // Required empty public constructor
@@ -63,7 +61,6 @@ public class Home extends Fragment {
         viewFlipper.addView(imageView);
         viewFlipper.setFlipInterval(3000);
         viewFlipper.setAutoStart(true);
-        //TODO animation
     }
 
     private void initImage() {

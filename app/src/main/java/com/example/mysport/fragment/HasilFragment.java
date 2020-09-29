@@ -1,5 +1,6 @@
 package com.example.mysport.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,7 @@ public class HasilFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class HasilFragment extends Fragment {
         txtKet=view.findViewById(R.id.text_view_hasil_ket);
 
         Bundle bundle = getArguments();
+        assert bundle != null;
         nama = bundle.getString("EXTRA_NAMA");
         bb = bundle.getDouble("EXTRA_BB", defaultValue);
         tb = bundle.getDouble("EXTRA_TB", defaultValue);

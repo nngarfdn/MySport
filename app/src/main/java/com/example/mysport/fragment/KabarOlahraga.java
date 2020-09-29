@@ -2,38 +2,27 @@ package com.example.mysport.fragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.mysport.R;
 import com.example.mysport.adapter.NewsAdapter;
-import com.example.mysport.data.NewsApi;
-import com.example.mysport.model.News;
+import com.example.mysport.model.ArticlesItem;
+import com.example.mysport.viewmodel.SportViewModel;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 
 public class KabarOlahraga extends Fragment implements NewsAdapter.onSelectData {
 
-        RecyclerView rvSportNews;
+    RecyclerView rvSportNews;
     NewsAdapter newsAdapter;
-    List<News> modelNews = new ArrayList<>();
     ProgressDialog progressDialog;
+    SportViewModel sportViewModel;
 
     public KabarOlahraga() {
         // Required empty public constructor
@@ -43,6 +32,14 @@ public class KabarOlahraga extends Fragment implements NewsAdapter.onSelectData 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sportViewModel = ViewModelProviders.of(this).get(SportViewModel.class);
+        sportViewModel.loadResults();
+        sportViewModel.getResults().observe(this, result -> {
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+            rvSportNews.setLayoutManager(layoutManager);
+            newsAdapter = new NewsAdapter(getActivity(), result.getArticles(), this);
+            rvSportNews.setAdapter(newsAdapter);
+        });
 
     }
 
@@ -59,72 +56,29 @@ public class KabarOlahraga extends Fragment implements NewsAdapter.onSelectData 
         rvSportNews = view.findViewById(R.id.rvNews);
         rvSportNews.setHasFixedSize(true);
         rvSportNews.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        setupToolbar();
-        loadJSON();
 
 
         return view;
     }
 
-    private void loadJSON() {
-                progressDialog.show();
-        AndroidNetworking.get(NewsApi.GET_CATEGORY_SPORTS)
-                .setPriority(Priority.HIGH)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            progressDialog.dismiss();
-                            JSONArray playerArray = response.getJSONArray("articles");
-                            for (int i = 0; i < playerArray.length(); i++) {
-                                JSONObject temp = playerArray.getJSONObject(i);
-                                News dataApi = new News();
-                                dataApi.setTitle(temp.getString("title"));
-                                dataApi.setUrl(temp.getString("url"));
-                                dataApi.setPublisedAt(temp.getString("publishedAt"));
-                                dataApi.setUrlToImage(temp.getString("urlToImage"));
 
-                                modelNews.add(dataApi);
-                                showNews();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
 
-                    @Override
-                    public void onError(ANError anError) {
-                        progressDialog.dismiss();
-                    }
-                });
-
+    private void loadFragment(Fragment fragment) {
+        if (fragment != null) {
+            Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fl_container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
-    private void showNews() {
-        newsAdapter = new NewsAdapter(getActivity(), modelNews, this);
-        rvSportNews.setAdapter(newsAdapter);
-    }
-
-        @Override
-    public void onSelected(News mdlNews) {
+    @Override
+    public void onSelected(ArticlesItem mdlNews) {
         DetailKabar detailAktivitas = new DetailKabar();
         Bundle bundle = new Bundle();
         bundle.putString("url", mdlNews.getUrl());
         detailAktivitas.setArguments(bundle);
         loadFragment(detailAktivitas);
-//        startActivity(new Intent(getActivity(), OpenNewsActivity.class).putExtra("url", mdlNews.getUrl()));
-    }
-
-   private boolean loadFragment(Fragment fragment) {
-        if (fragment != null) {
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fl_container, fragment)
-                    .addToBackStack(null)
-                    .commit();
-            return true;
-        }
-        return false;
     }
 
 }

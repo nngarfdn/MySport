@@ -1,6 +1,5 @@
 package com.example.mysport.adapter;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysport.R;
-
 import com.example.mysport.fragment.DetailAktivitas;
 import com.example.mysport.fragment.TickerTimer;
 import com.example.mysport.model.Aktivitas;
@@ -25,7 +23,6 @@ import java.util.ArrayList;
 
 public class ListAktivitasAdapter extends RecyclerView.Adapter<ListAktivitasAdapter.ListViewHolder> {
     private ArrayList<Aktivitas> listAktivitas;
-    private Context context;
 
     public ListAktivitasAdapter(ArrayList<Aktivitas> listAktivitas) {
         this.listAktivitas = listAktivitas;
@@ -51,28 +48,25 @@ public class ListAktivitasAdapter extends RecyclerView.Adapter<ListAktivitasAdap
         holder.detail.setText(aktivitas.getDetail());
         holder.v_color.setBackgroundColor(aktivitas.getColor());
 
-        holder.cv_holder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.cv_holder.setOnClickListener(v -> {
 
 
-                DetailAktivitas detailAktivitas = new DetailAktivitas();
-                TickerTimer tickerTimer = new TickerTimer();
-                //mengirim data
-                Bundle mBundle = new Bundle();
-                mBundle.putString("name", listAktivitas.get(position).getName());
-                mBundle.putString("desc", listAktivitas.get(position).getDetail());
-                mBundle.putString("photo", listAktivitas.get(position).getPhoto());
-                mBundle.putInt("color", listAktivitas.get(position).getColor());
-                mBundle.putString("key_id", listAktivitas.get(position).getKey_id());
-                mBundle.putString("fav_status", listAktivitas.get(position).getFavStatus());
-                detailAktivitas.setArguments(mBundle);
-                tickerTimer.setArguments(mBundle);
-                //pindah fragment sama seperti intent
-                AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, detailAktivitas)
-                        .addToBackStack(null).commit();
-            }
+            DetailAktivitas detailAktivitas = new DetailAktivitas();
+            TickerTimer tickerTimer = new TickerTimer();
+            //mengirim data
+            Bundle mBundle = new Bundle();
+            mBundle.putString("name", listAktivitas.get(position).getName());
+            mBundle.putString("desc", listAktivitas.get(position).getDetail());
+            mBundle.putString("photo", listAktivitas.get(position).getPhoto());
+            mBundle.putInt("color", listAktivitas.get(position).getColor());
+            mBundle.putString("key_id", listAktivitas.get(position).getKey_id());
+            mBundle.putString("fav_status", listAktivitas.get(position).getFavStatus());
+            detailAktivitas.setArguments(mBundle);
+            tickerTimer.setArguments(mBundle);
+            //pindah fragment sama seperti intent
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, detailAktivitas)
+                    .addToBackStack(null).commit();
         });
     }
 
